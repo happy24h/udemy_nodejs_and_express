@@ -1,7 +1,10 @@
-const express = require("express");
-const app = express();
-const port = 8080;
+const express = require("express"); // common js
+// import express from "express"; // es module
 
+const app = express(); // app express
+const port = 8080; // port
+
+// khai báo route
 app.get("/", function (req, res) {
   res.send("Hello World");
 });
