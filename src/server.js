@@ -5,7 +5,6 @@ const path = require("path"); // commonjs
 require("dotenv").config();
 
 // console.log(">>> check env: ", process.env);
-
 const app = express(); // app express
 const port = process.env.PORT || 8888; // port
 const hostname = process.env.HOST_NAME;
