@@ -2,9 +2,13 @@
 const express = require("express"); // common js
 
 const path = require("path"); // commonjs
+require("dotenv").config();
+
+console.log(">>> check env: ", process.env);
 
 const app = express(); // app express
-const port = 8080; // port
+const port = process.env.PORT || 8888; // port
+const hostname = process.env.HOST_NAME;
 
 // config template engine - khai bao luu file ejs muon lay
 app.set("views", path.join(__dirname, "views"));
@@ -28,6 +32,6 @@ app.get("/detail", (req, res) => {
   res.send("<h2>This is page detail</h2>");
 });
 
-app.listen(port, () => {
+app.listen(port, hostname, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });

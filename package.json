@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/happy24h/udemy_nodejs_and_express#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2"
   }
