@@ -4,7 +4,7 @@ const express = require("express"); // common js
 const path = require("path"); // commonjs
 require("dotenv").config();
 
-console.log(">>> check env: ", process.env);
+// console.log(">>> check env: ", process.env);
 
 const app = express(); // app express
 const port = process.env.PORT || 8888; // port
@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 
 // khai báo route
 app.get("/", function (req, res) {
-  res.send("Hello World");
+  res.send("Hello World !");
 });
 
 app.get("/content", (req, res) => {
