@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const { getHomePage, getLoginPage } = require("../controllers/homeController");
+const { getContentController } = require("../controllers/contentController");
+
+// router.Method('/route', handler)
 
 // khai báo route
-router.get("/", function (req, res) {
-  res.send("Hello World !");
-});
+router.get("/", getHomePage);
 
-router.get("/content", (req, res) => {
-  // res.send("This is page content");
-  res.render("content.ejs");
-});
+router.get("/content", getContentController);
+
+router.get("/login", getLoginPage);
 
 router.get("/about", (req, res) => {
   res.render("about.ejs");
