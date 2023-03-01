@@ -17,10 +17,10 @@ configViewEngine(app);
 app.use("/", webRoutes); // Tham số đầu tiên là tiền tố định nghĩa route
 
 // simple query
-connection.query("select * from Users u", function (err, results, fields) {
-  console.log("check results >>>", results); // results contains rows returned by server
-  // console.log("check fields >>>", fields); // fields contains extra meta data about results, if available
-});
+// connection.query("select * from Users u", function (err, results, fields) {
+//   console.log("check results >>>", results); // results contains rows returned by server
+//   console.log("check fields >>>", fields); // fields contains extra meta data about results, if available
+// });
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
