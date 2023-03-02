@@ -4,6 +4,7 @@ const {
   getHomePage,
   getLoginPage,
   postCreateUser,
+  getCreatePage,
 } = require("../controllers/homeController");
 const { getContentController } = require("../controllers/contentController");
 
@@ -11,6 +12,7 @@ const { getContentController } = require("../controllers/contentController");
 
 // khai báo route
 router.get("/", getHomePage);
+router.get("/create", getCreatePage);
 
 router.post("/create-user", postCreateUser);
 
