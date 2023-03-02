@@ -24,6 +24,8 @@ const connection = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+  // charset: "utf8mb4",
+
   // maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`
   // idleTimeout: 60000, // idle connections timeout, in milliseconds, the default value 60000
 });
