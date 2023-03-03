@@ -37,10 +37,11 @@
     <div class="topnav">
       <a class="active" href="/">Home</a>
       <a href="/create">Create Users</a>
+      <a href="/edit">Edit Users</a>
     </div>
     <div class="table-container">
       <!-- data không nhận dưới dạng object nên phải chuyển thành kiều json -->
-      <%= JSON.stringify(listUsers) %>
+      <!-- <%= JSON.stringify(listUsers) %> -->
       <div class="title">List Users</div>
       <table>
         <tr>
@@ -50,14 +51,35 @@
           <th>City</th>
           <th>Action</th>
         </tr>
+        <!-- <% for (var i = 0; i < listUsers.length; i++) { %>
         <tr>
-          <td>Peter</td>
-          <td>Griffin</td>
-          <td>$100</td>
-          <td>$100</td>
+          <td><%= listUsers[i].id%></td>
+          <td><%= listUsers[i].email%></td>
+          <td><%= listUsers[i].name%></td>
+          <td><%= listUsers[i].city%></td>
+
           <td><button>Delete</button><button>Edit</button></td>
         </tr>
+        <% } %>  -->
+        <% listUsers.forEach(function(item) { %>
+        <tr>
+          <td><%= item.id%></td>
+          <td><%= item.email%></td>
+          <td><%= item.name%></td>
+          <td><%= item.city%></td>
+
+          <td>
+            <button>Delete</button>
+            <a href="/update">Edit</a>
+          </td>
+        </tr>
+
+        <% }) %>
       </table>
+
+      <ul class="timeline">
+        <ul class="timeline"></ul>
+      </ul>
     </div>
   </body>
 </html>

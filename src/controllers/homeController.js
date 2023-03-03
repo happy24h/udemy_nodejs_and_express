@@ -8,6 +8,9 @@ const getHomePage = async (req, res) => {
 const getCreatePage = (req, res) => {
   return res.render("create.ejs");
 };
+const getUpdatePage = (req, res) => {
+  return res.render("edit.ejs");
+};
 const postCreateUser = async (req, res) => {
   console.log("check request body >>>", req.body);
 
@@ -54,4 +57,5 @@ module.exports = {
   getLoginPage,
   postCreateUser,
   getCreatePage,
+  getUpdatePage,
 };
