@@ -3,6 +3,7 @@ const {
   getAllUsers,
   getUserById,
   updateUserById,
+  deleteUserById,
 } = require("../services/CRUDService");
 const getHomePage = async (req, res) => {
   let results = await getAllUsers();
@@ -46,8 +47,11 @@ const postDeleteUser = async () => {
   let user = await getUserById(userId);
   res.render("delete.ejs", { userEdit: user });
 };
-const postHandleRemoveUser = () => {
-  res.send("ok deleted");
+const postHandleRemoveUser = async (req, res) => {
+  const id = req.body.userId;
+  await deleteUserById(id);
+
+  res.redirect("/");
 };
 
 const getLoginPage = (req, res) => {
