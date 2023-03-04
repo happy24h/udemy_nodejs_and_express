@@ -42,7 +42,7 @@ const postUpdateUser = async (req, res) => {
   res.redirect("/");
 };
 
-const postDeleteUser = async () => {
+const postDeleteUser = async (req, res) => {
   const userId = req.params.id;
   let user = await getUserById(userId);
   res.render("delete.ejs", { userEdit: user });
