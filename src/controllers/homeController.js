@@ -1,5 +1,5 @@
 const connection = require("../config/database");
-const { getAllUsers } = require("../services/CRUDService");
+const { getAllUsers, getUserById } = require("../services/CRUDService");
 const getHomePage = async (req, res) => {
   let results = await getAllUsers();
   return res.render("home.ejs", { listUsers: results });
@@ -11,32 +11,14 @@ const getCreatePage = (req, res) => {
 const getUpdatePage = async (req, res) => {
   console.log("check user request params", req.params);
   const userId = req.params.id;
-  let [results, fields] = await connection.query(
-    "select * from Users where id = ?",
-    [userId]
-  );
+  let user = await getUserById(userId);
 
-  console.log("check results user where id", results);
-
-  return res.render("edit.ejs");
+  return res.render("edit.ejs", { userEdit: user });
 };
 const postCreateUser = async (req, res) => {
   // console.log("check request body >>>", req.body);
-
   let { email, name, city } = req.body;
-
   console.log("email = ", email, "name = ", name, "city = ", city);
-
-  // Cách code cũ
-  // connection.query(
-  //   "INSERT INTO Users (email, name, city) VALUES (?, ?, ?)",
-  //   [email, name, city],
-  //   (error, results) => {
-  //     console.log("check result", results);
-  //     if (error) return res.json({ error: error });
-  //     return res.send("create user success !");
-  //   }
-  // );
 
   // Cách code mới
   let [results, fields] = await connection.query(
