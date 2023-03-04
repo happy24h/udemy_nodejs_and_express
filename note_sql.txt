@@ -1,0 +1,47 @@
+SQL SELECT:
+select * from Users
+
+SQL INSERT INTO - NEW CREATE:
+INSERT INTO Users
+VALUE (1, 'vietanh@gmail.com', 'Nguyen Viet Anh', 'Ha Noi')
+
+SQL WHERE - GET BY ID:
+select * from Users where id = 1
+
+SQL UPDATE:
+UPDATE Users
+SET email = 'vietanhhappy99@gmail.com', name = 'viet anh', city = 'ha noi'
+WHERE id = 1;
+
+SQL DELETE:
+DELETE FROM Users WHERE id = 1
+
+---
+
+Cách lấy dự liệu động trong database với nodejs.
+SQL SELECT - GET ALL DATA TABLE:
+let [results, fields] = await connection.query("select * from Users");
+
+SQL INSERT INTO - NEW CREATE:
+let [results, fields] = await connection.query(
+"INSERT INTO Users (email, name, city) VALUES (?, ?, ?)",
+[email, name, city]
+);
+
+SQL WHERE - GET BY ID:
+let [results, fields] = await connection.query(
+"select * from Users where id = ?",
+[userId]
+);
+
+SQL UPDATE:
+let [results, fields] = await connection.query(
+"UPDATE Users SET email = ?, name = ?, city = ? WHERE id = ?",
+[email, name, city, userId]
+);
+
+SQL DELETE:
+let [results, fields] = await connection.query(
+"DELETE FROM Users WHERE id = ?",
+[id]
+);
