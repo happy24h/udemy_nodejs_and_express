@@ -18,7 +18,7 @@ const getUserById = async (userId) => {
 const updateUserById = async (email, name, city, userId) => {
   // Cách code mới
   let [results, fields] = await connection.query(
-    "UPDATE Users SET email = ?, name = ?, city = ? WHERE ?",
+    "UPDATE Users SET email = ?, name = ?, city = ? WHERE id = ?",
     [email, name, city, userId]
   );
   // return results;
