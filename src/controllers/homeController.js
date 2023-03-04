@@ -1,5 +1,9 @@
 const connection = require("../config/database");
-const { getAllUsers, getUserById } = require("../services/CRUDService");
+const {
+  getAllUsers,
+  getUserById,
+  updateUserById,
+} = require("../services/CRUDService");
 const getHomePage = async (req, res) => {
   let results = await getAllUsers();
   return res.render("home.ejs", { listUsers: results });
@@ -28,15 +32,13 @@ const postCreateUser = async (req, res) => {
 
   console.log(">>> check result: ", results);
   res.send("Created user success !");
+};
 
-  // Cách code cũ
-  // connection.query("select * from Users u", function (err, result, fields) {
-  //   console.log(">>> result= ", result);
-  // });
-
-  // Cách code mới
-  // const [results, fields] = await connection.query("select * from Users u");
-  // console.log(" >>> check results: ", results);
+const postUpdateUser = async (req, res) => {
+  // console.log("check request body >>>", req.body);
+  let { email, name, city, userId } = req.body;
+  await updateUserById(email, name, city, userId);
+  res.redirect("/");
 };
 
 const getLoginPage = (req, res) => {
@@ -49,4 +51,5 @@ module.exports = {
   postCreateUser,
   getCreatePage,
   getUpdatePage,
+  postUpdateUser,
 };
