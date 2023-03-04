@@ -8,11 +8,20 @@ const getHomePage = async (req, res) => {
 const getCreatePage = (req, res) => {
   return res.render("create.ejs");
 };
-const getUpdatePage = (req, res) => {
+const getUpdatePage = async (req, res) => {
+  console.log("check user request params", req.params);
+  const userId = req.params.id;
+  let [results, fields] = await connection.query(
+    "select * from Users where id = ?",
+    [userId]
+  );
+
+  console.log("check results user where id", results);
+
   return res.render("edit.ejs");
 };
 const postCreateUser = async (req, res) => {
-  console.log("check request body >>>", req.body);
+  // console.log("check request body >>>", req.body);
 
   let { email, name, city } = req.body;
 
