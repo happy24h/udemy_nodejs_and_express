@@ -23,6 +23,15 @@ app.use("/", webRoutes); // Tham số đầu tiên là tiền tố định nghĩ
 // test connection
 connection();
 
-app.listen(port, hostname, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
-});
+(async () => {
+  try {
+    await connection();
+    app.listen(port, hostname, () => {
+      console.log(
+        `Backend zero app listening on port http://localhost:${port}`
+      );
+    });
+  } catch (error) {
+    console.log(">>> Error connect to DB: ", error);
+  }
+})();
