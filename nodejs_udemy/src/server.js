@@ -5,7 +5,6 @@ const path = require("path"); // commonjs
 const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
 const connection = require("./config/database");
-const createModal = require("./models/Kitten");
 const app = express(); // app express
 const port = process.env.PORT || 8888; // port
 const hostname = process.env.HOST_NAME;
@@ -20,8 +19,6 @@ configViewEngine(app);
 // khai báo route
 app.use("/", webRoutes); // Tham số đầu tiên là tiền tố định nghĩa route
 
-const cat = new createModal({ name: "create modal" });
-cat.save();
 (async () => {
   try {
     await connection();
