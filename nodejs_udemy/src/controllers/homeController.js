@@ -16,9 +16,10 @@ const getCreatePage = (req, res) => {
   return res.render("create.ejs");
 };
 const getUpdatePage = async (req, res) => {
-  console.log("check user request params", req.params);
+  console.log("check request params", req.params);
   const userId = req.params.id;
-  let user = await getUserById(userId);
+  // let user = await getUserById(userId);
+  let user = await User.findById(userId).exec();
 
   return res.render("edit.ejs", { userEdit: user });
 };
@@ -37,7 +38,14 @@ const postCreateUser = async (req, res) => {
 const postUpdateUser = async (req, res) => {
   // console.log("check request body >>>", req.body);
   let { email, name, city, userId } = req.body;
-  await updateUserById(email, name, city, userId);
+  // await updateUserById(email, name, city, userId);
+
+  await User.updateOne(
+    { _id: userId },
+    { email: email },
+    { name: name },
+    { city: city }
+  );
   res.redirect("/");
 };
 
