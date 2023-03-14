@@ -8,7 +8,7 @@ const {
 
 const User = require("../models/user");
 const getHomePage = async (req, res) => {
-  let results = [];
+  let results = await User.find({});
   return res.render("home.ejs", { listUsers: results });
 };
 
@@ -24,7 +24,6 @@ const getUpdatePage = async (req, res) => {
 };
 const postCreateUser = async (req, res) => {
   let { email, name, city } = req.body;
-  console.log("email = ", email, "name = ", name, "city = ", city);
 
   // mongoose save vs insert vs create
   await User.create({
