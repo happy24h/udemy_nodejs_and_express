@@ -25,26 +25,21 @@ const getUpdatePage = async (req, res) => {
 };
 const postCreateUser = async (req, res) => {
   let { email, name, city } = req.body;
-
   // mongoose save vs insert vs create
   await User.create({
     email: email,
     name: name,
     city: city,
   });
-  res.send("Created user success !");
+  res.redirect("/");
 };
 
 const postUpdateUser = async (req, res) => {
-  // console.log("check request body >>>", req.body);
   let { email, name, city, userId } = req.body;
   // await updateUserById(email, name, city, userId);
-
   await User.updateOne(
     { _id: userId },
-    { email: email },
-    { name: name },
-    { city: city }
+    { email: email, name: name, city: city }
   );
   res.redirect("/");
 };
