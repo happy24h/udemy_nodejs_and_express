@@ -4,6 +4,7 @@ const express = require("express"); // common js
 const path = require("path"); // commonjs
 const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
+const apiRoutes = require("./routes/api");
 const connection = require("./config/database");
 const app = express(); // app express
 const port = process.env.PORT || 8888; // port
@@ -18,7 +19,7 @@ configViewEngine(app);
 
 // khai báo route
 app.use("/", webRoutes); // Tham số đầu tiên là tiền tố định nghĩa route
-
+app.use("/v1/api/", apiRoutes); // Tham số đầu tiên là tiền tố định nghĩa route
 (async () => {
   try {
     await connection();
