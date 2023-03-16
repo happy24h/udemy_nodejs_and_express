@@ -17,8 +17,8 @@ SQL DELETE:
 DELETE FROM Users WHERE id = 1
 
 ---
-
 Cách lấy dự liệu động trong database với nodejs.
+
 SQL SELECT - GET ALL DATA TABLE:
 let [results, fields] = await connection.query("select * from Users");
 
@@ -45,3 +45,30 @@ let [results, fields] = await connection.query(
 "DELETE FROM Users WHERE id = ?",
 [id]
 );
+
+---
+Cách lấy dữ liệu bằng code trên database
+
+GET ALL USERS
+let results = await User.find({});
+
+CREATE USER
+let user = await User.create({
+    email: email,
+    name: name,
+    city: city,
+});
+
+GET USER BY ID
+let user = await User.findById(userId).exec();
+
+UPDATE A USER
+let user = await User.updateOne(
+    { _id: userId },
+    { email: email, name: name, city: city }
+);
+
+DELETE A USER
+let result = await User.deleteOne({
+    _id: id,
+});

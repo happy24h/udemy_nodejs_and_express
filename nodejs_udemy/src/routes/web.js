@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const {
   getHomePage,
-  getLoginPage,
   postCreateUser,
   getCreatePage,
   getUpdatePage,
@@ -25,8 +24,6 @@ router.post("/delete-user/:id", postDeleteUser);
 router.post("/delete-user", postHandleRemoveUser);
 
 router.get("/content", getContentController);
-
-router.get("/login", getLoginPage);
 
 router.get("/about", (req, res) => {
   res.render("about.ejs");

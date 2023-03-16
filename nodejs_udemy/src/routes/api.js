@@ -3,6 +3,7 @@ const routerAPI = express.Router();
 const {
   getUsersAPI,
   postCreateUserAPI,
+  getUserById,
   putUpdateUserAPI,
   deleteUserAPI,
 } = require("../controllers/apiController");
@@ -18,6 +19,7 @@ routerAPI.get("/abc", (req, res) => {
 });
 routerAPI.get("/users", getUsersAPI);
 routerAPI.post("/users", postCreateUserAPI);
+routerAPI.get("/user/:id", getUserById);
 routerAPI.put("/users", putUpdateUserAPI);
 routerAPI.delete("/users", deleteUserAPI);
 
