@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 // shape data - xác định hình dạng của các tài liệu trong bộ sưu tập đó.
 const customerSchema = new mongoose.Schema(
   {
-    name: { type: String, require: true },
+    name: { type: String, required: true },
     address: String,
     phone: String,
     email: String,
