@@ -12,7 +12,7 @@ const {
 
 const {
   postCreateCustomer,
-  postArrayCustomerService,
+  postCreateArrayCustomerService,
 } = require("../controllers/customerController");
 // khai báo route
 routerAPI.get("/", (req, res) => {
@@ -34,6 +34,6 @@ routerAPI.post("/file", postUploadSingleFileApi);
 routerAPI.post("/files", postUploadMultipleFilesAPI);
 
 routerAPI.post("/customers", postCreateCustomer);
-routerAPI.post("/customers-many", postArrayCustomerService);
+routerAPI.post("/customers-many", postCreateArrayCustomerService);
 
 module.exports = routerAPI; // export default

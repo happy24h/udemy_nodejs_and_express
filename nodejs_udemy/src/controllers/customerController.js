@@ -33,8 +33,8 @@ module.exports = {
     });
   },
 
-  postArrayCustomerService: async (req, res) => {
-    let customers = await createArrayCustomerService(req.body.customer);
+  postCreateArrayCustomerService: async (req, res) => {
+    let customers = await createArrayCustomerService(req.body.customers);
     if (customers) {
       return res.status(200).json({ EC: 0, data: customers });
     } else {
