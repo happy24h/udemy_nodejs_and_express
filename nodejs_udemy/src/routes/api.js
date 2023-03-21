@@ -14,11 +14,13 @@ const {
 routerAPI.get("/", (req, res) => {
   res.send("hello world with apis");
 });
+
 routerAPI.get("/abc", (req, res) => {
   res.status(200).json({
     data: "hello world",
   });
 });
+
 routerAPI.get("/users", getUsersAPI);
 routerAPI.post("/users", postCreateUserAPI);
 routerAPI.get("/user/:id", getUserById);
