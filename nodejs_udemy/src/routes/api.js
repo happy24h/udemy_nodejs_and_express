@@ -13,6 +13,7 @@ const {
 const {
   postCreateCustomer,
   postCreateArrayCustomerService,
+  getAllCustomers,
 } = require("../controllers/customerController");
 // khai báo route
 routerAPI.get("/", (req, res) => {
@@ -25,6 +26,7 @@ routerAPI.get("/abc", (req, res) => {
   });
 });
 
+//users
 routerAPI.get("/users", getUsersAPI);
 routerAPI.post("/users", postCreateUserAPI);
 routerAPI.get("/user/:id", getUserById);
@@ -33,7 +35,9 @@ routerAPI.delete("/users", deleteUserAPI);
 routerAPI.post("/file", postUploadSingleFileApi);
 routerAPI.post("/files", postUploadMultipleFilesAPI);
 
+// customers
 routerAPI.post("/customers", postCreateCustomer);
 routerAPI.post("/customers-many", postCreateArrayCustomerService);
+routerAPI.get("/customers", getAllCustomers);
 
 module.exports = routerAPI; // export default
