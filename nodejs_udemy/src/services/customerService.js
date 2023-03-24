@@ -37,8 +37,35 @@ const getAllCustomerService = async () => {
   }
 };
 
+const putUpdateCustomerService = async (dataCustomer) => {
+  let { name, address, phone, email, description, image, customerId } =
+    dataCustomer;
+  try {
+    let result = await Customer.updateOne(
+      { _id: customerId },
+      { name, address, phone, email, description, image }
+    );
+    return result;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const deleteACustomerService = async (id) => {
+  try {
+    let result = await Customer.deleteById(id);
+    return result;
+  } catch (error) {
+    console.log("error >>>", error);
+    return null;
+  }
+};
+
 module.exports = {
   createCustomerService,
   createArrayCustomerService,
   getAllCustomerService,
+  putUpdateCustomerService,
+  deleteACustomerService,
 };
