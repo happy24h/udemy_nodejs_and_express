@@ -62,10 +62,31 @@ const deleteACustomerService = async (id) => {
   }
 };
 
+// const deleteACustomerService = async (id) => {
+//   try {
+//     let result = await Customer.findByHoiDanIT(id);
+//     return result;
+//   } catch (error) {
+//     console.log("error >>>", error);
+//     return null;
+//   }
+// };
+
+const deleteArrayCustomerService = async (arrIds) => {
+  // mongoose bulk delete
+  try {
+    let result = await Customer.delete({ _id: { $in: arrIds } });
+    return result;
+  } catch (error) {
+    console.log("error >>>>", error);
+    return null;
+  }
+};
 module.exports = {
   createCustomerService,
   createArrayCustomerService,
   getAllCustomerService,
   putUpdateCustomerService,
   deleteACustomerService,
+  deleteArrayCustomerService,
 };
