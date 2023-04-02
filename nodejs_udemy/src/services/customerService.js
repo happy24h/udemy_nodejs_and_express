@@ -28,13 +28,40 @@ const createArrayCustomerService = async (arr) => {
   }
 };
 
+// Tìm kiếm và phân trang không dùng thư viện
+// const getAllCustomerService = async (limit, page, name) => {
+//   try {
+//     let result = null;
+//     if (limit && page) {
+//       let offset = (page - 1) * limit;
+//       if (name) {
+//         result = await Customer.find({
+//           name: { $regex: ".*" + name + ".*" },
+//         })
+//           .skip(offset)
+//           .limit(limit)
+//           .exec();
+//       } else {
+//         result = await Customer.find({}).skip(offset).limit(limit).exec();
+//       }
+//     } else {
+//       result = await Customer.find({});
+//     }
+
+//     return result;
+//   } catch (error) {
+//     console.log("check error", error);
+//     return null;
+//   }
+// };
+
 const getAllCustomerService = async (limit, page, name, queryString) => {
   try {
     let result = null;
     if (limit && page) {
       let offset = (page - 1) * limit;
       const { filter } = aqp(queryString);
-      delete filter.page;
+      (filter.name = { $regex: ".*" + name + ".*" }), delete filter.page;
       console.log(">>> check filter: ", filter);
 
       result = await Customer.find(filter).skip(offset).limit(limit).exec();
