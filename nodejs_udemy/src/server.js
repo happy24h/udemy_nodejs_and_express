@@ -42,7 +42,12 @@ app.use("/v1/api/", apiRoutes); // Tham số đầu tiên là tiền tố địn
     await client.connect();
     console.log("connected successfully to server");
     const db = client.db(dbName);
-    const collection = db.collection("documents");
+    const collection = db.collection("products");
+
+    collection.insertOne({ name: "Quang Huy", address: "Hà Nội" });
+    collection.insertOne({ name: "Việt Anh", address: "Hà Nội", age: "23" });
+    let test = await collection.findOne({ age: "23" });
+    console.log(">>> find data", test);
 
     //
 
