@@ -44,10 +44,17 @@ app.use("/v1/api/", apiRoutes); // Tham số đầu tiên là tiền tố địn
     const db = client.db(dbName);
     const collection = db.collection("products");
 
-    collection.insertOne({ name: "Quang Huy", address: "Hà Nội" });
+    collection.insertOne({
+      name: "Quang Huy",
+      address: "Hà Nội",
+      country: {
+        name: "Việt Nam",
+        code: 10000,
+      },
+    });
     collection.insertOne({ name: "Việt Anh", address: "Hà Nội", age: "23" });
-    let test = await collection.findOne({ age: "23" });
-    console.log(">>> find data", test);
+    // let test = await collection.findOne({ age: "23" });
+    // console.log(">>> find data", test);
 
     //
 
