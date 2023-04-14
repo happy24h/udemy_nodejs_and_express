@@ -33,9 +33,9 @@ module.exports = {
   getProject: async (queryString) => {
     const page = queryString.page;
     const { filter, limit, population } = aqp(queryString);
-    console.log("before", filter);
+    // console.log("before", filter);
     delete filter.page;
-    console.log("after", filter);
+    // console.log("after", filter);
     let offset = (page - 1) * limit;
     result = await Project.find(filter)
       .populate(population)
